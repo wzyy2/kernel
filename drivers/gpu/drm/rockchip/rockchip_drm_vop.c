@@ -1643,7 +1643,7 @@ static void vop_crtc_enable(struct drm_crtc *crtc)
 	}
 
 #ifdef CONFIG_ARM_RK3288_DMC_DEVFREQ
-	if (vblank_time > DMC_SET_RATE_TIME_NS + DMC_PAUSE_CPU_TIME_NS && num_enabled_crtc != 2) {
+	if (vblank_time > DMC_SET_RATE_TIME_NS + DMC_PAUSE_CPU_TIME_NS && num_enabled_crtc != 2 && s->output_type != DRM_MODE_CONNECTOR_HDMIA) {
 		rockchip_dmc_lock();
 		vop->vblank_time = vblank_time;
 		rockchip_dmc_unlock();
